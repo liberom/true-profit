@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://true-profit.sidepocketlab.com/sitemap.xml

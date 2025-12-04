@@ -1,0 +1,45 @@
+/* TrueProfit styles */
+:root{--bg:#f7f7fb;--card:#ffffff;--muted:#6b7280;--accent:#0ea5a4;--accent-600:#08978f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#0f172a;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+.container{max-width:980px;margin:28px auto;padding:16px}
+.hero{text-align:center;margin-bottom:18px}
+.hero h1{margin:0;font-size:1.8rem}
+.tagline{color:var(--muted);margin-top:6px}
+.card{background:var(--card);border-radius:10px;padding:16px;box-shadow:0 6px 18px rgba(8,9,12,0.06);margin-bottom:16px}
+.calculator{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field{display:flex;flex-direction:column}
+.field span{font-size:0.9rem;color:var(--muted);margin-bottom:6px}
+input[type=number]{padding:10px;border:1px solid #e6e9ee;border-radius:8px;font-size:1rem}
+.actions{grid-column:1 / -1;display:flex;gap:8px;justify-content:flex-start}
+.btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+.btn-muted{background:#eef2f4;color:#334155}
+.results{padding:14px}
+.card-light{background:#fbfdfe}
+.result-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #eef2f4}
+.result-row strong{font-size:1.05rem}
+.breakdown{list-style:none;padding-left:0;margin:8px 0}
+.breakdown li{padding:6px 0;border-bottom:1px solid #f1f5f9}
+.info .muted{color:var(--muted)}
+.foot{text-align:center;color:var(--muted);font-size:0.9rem}
+
+/* Defensive: ensure inputs are interactable even if a global overlay exists */
+.calculator, #calcForm {position:relative; z-index: 99999}
+input, button, select, textarea {position:relative; z-index: 100000; pointer-events: auto}
+
+/* Visual focus aid for debugging input focus issues */
+input:focus, textarea:focus, select:focus {outline: 3px solid rgba(14,165,164,0.14); box-shadow: 0 0 0 3px rgba(14,165,164,0.06)}
+
+/* Responsive */
+@media (max-width:900px){
+  .calculator{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .actions{justify-content:stretch}
+}
+
+@media (max-width:480px){
+  .container{padding:12px;margin:16px}
+  .hero h1{font-size:1.4rem}
+  input[type=number]{font-size:0.95rem}
+}

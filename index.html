@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrueProfit — E-commerce Profit Margin Calculator</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="Calculate your true e-commerce profit margin including processing and marketplace fees.">
+  <style>
+    /* Minimal critical CSS to avoid FOIT while styles.css loads */
+    :root{--bg:#f7f7fb;--card:#fff;--muted:#6b7280;--accent:#0ea5a4}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4;background:var(--bg);color:#0f172a}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>TrueProfit</h1>
+      <p class="tagline">Uncover your true e-commerce profit margin — factoring in fees and shipping.</p>
+    </header>
+
+    <section class="card calculator">
+      <form id="calcForm" class="grid">
+        <label class="field">
+          <span>Sale Price</span>
+          <input id="salePrice" type="number" min="0" step="0.01" placeholder="e.g. 29.99" required>
+        </label>
+
+        <label class="field">
+          <span>Cost of Goods</span>
+          <input id="costOfGoods" type="number" min="0" step="0.01" placeholder="e.g. 8.00">
+        </label>
+
+        <label class="field">
+          <span>Shipping Cost</span>
+          <input id="shippingCost" type="number" min="0" step="0.01" placeholder="e.g. 4.50">
+        </label>
+
+        <label class="field">
+          <span>Payment Processing Fee (%)</span>
+          <input id="paymentPct" type="number" min="0" step="0.01" value="2.9">
+        </label>
+
+        <label class="field">
+          <span>Payment Processing Fee (fixed)</span>
+          <input id="paymentFixed" type="number" min="0" step="0.01" value="0.30">
+        </label>
+
+        <label class="field">
+          <span>Marketplace Fee (%)</span>
+          <input id="marketPct" type="number" min="0" step="0.01" value="6.5">
+        </label>
+
+        <div class="actions">
+          <button id="calculateBtn" type="button" class="btn">Calculate</button>
+          <button id="resetBtn" type="button" class="btn btn-muted">Reset</button>
+        </div>
+      </form>
+
+      <aside class="results card-light" aria-live="polite">
+        <h2>Results</h2>
+        <div class="result-row"><span>Net Profit</span><strong id="netProfit">—</strong></div>
+        <div class="result-row"><span>Profit Margin</span><strong id="profitMargin">—</strong></div>
+        <details open>
+          <summary>Fee Breakdown</summary>
+          <ul class="breakdown">
+            <li>Payment Fee: <strong id="paymentFee">—</strong></li>
+            <li>Marketplace Fee: <strong id="marketFee">—</strong></li>
+            <li>Shipping: <strong id="shippingOut">—</strong></li>
+            <li>Cost of Goods: <strong id="cogsOut">—</strong></li>
+          </ul>
+        </details>
+      </aside>
+    </section>
+
+    <section class="card info">
+      <h3>How it works</h3>
+      <p class="muted">The calculator subtracts cost of goods, shipping, marketplace percentage fees, and payment processing (percentage + fixed) from the sale price to compute your net profit and profit margin.</p>
+      <p class="muted">Default fees are set to Stripe's typical 2.9% + $0.30 and a marketplace fee of 6.5% (Etsy example). Adjust values to match your platform.</p>
+    </section>
+
+    <footer class="foot">
+      <p>Made with ♥ — Free tool for sellers</p>
+      <p>A SidePocketLab initiative.</p>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
